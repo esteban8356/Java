@@ -3,10 +3,17 @@ public class EjemploAutomovil {
 
         Automovil subaru = new Automovil("subaru","Impreza");
         subaru.setCilindrada(2.0);
-        subaru.setColor("blanco");
-        Automovil mazda = new Automovil("Mazda","BT-50","Rojo",3.0);
+        subaru.setColor(Color.BLANCO);
+        Automovil mazda = new Automovil("Mazda","BT-50",Color.ROJO,3.0);
 
-        Automovil nissan = new Automovil("Nissan","Navara","Gris oscuro",3.5, 50);
+        Automovil nissan = new Automovil("Nissan","Navara",Color.GRIS,3.5, 50);
+        Automovil nissan2 = new Automovil("Nissan","Navara",Color.GRIS,3.5, 50);
+        Automovil auto = new Automovil();
+
+        System.out.println(nissan == nissan2);
+        System.out.println(nissan.equals(nissan2));
+        System.out.println(auto == nissan);
+        System.out.println(nissan);
 
         System.out.println(subaru.verDetalle());
         System.out.println(mazda.verDetalle());
