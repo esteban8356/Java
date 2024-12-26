@@ -2,7 +2,7 @@ package org.esteban.appfacturas.modelo;
 
 public class Cliente {
     private String nombre;
-    private String CC;
+    private String nif;
 
     public String getNombre() {
         return nombre;
@@ -12,11 +12,11 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public String getCC() {
-        return CC;
+    public String getNif() {
+        return nif;
     }
 
-    public void setCC(String CC) {
-        this.CC = CC;
+    public void setNif(String nif) {
+        this.nif = nif;
     }
 }

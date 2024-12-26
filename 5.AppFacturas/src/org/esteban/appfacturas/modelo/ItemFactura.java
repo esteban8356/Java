@@ -10,14 +10,6 @@ public class ItemFactura {
         this.producto = producto;
     }
 
-    public Producto getProducto() {
-        return producto;
-    }
-
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
-
     public int getCantidad() {
         return cantidad;
     }
@@ -26,7 +18,15 @@ public class ItemFactura {
         this.cantidad = cantidad;
     }
 
-    public float calcularImporte() {
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    public float calcularImporte(){
         return this.cantidad * this.producto.getPrecio();
     }
 }

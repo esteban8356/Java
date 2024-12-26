@@ -1,15 +1,13 @@
 package org.esteban.appfacturas.modelo;
 
 public class Producto {
-
     private int codigo;
     private String nombre;
-    private Float precio;
+    private float precio;
     private static int ultimoCodigo;
 
-
     public Producto() {
-        this.codigo = ultimoCodigo;
+        this.codigo = ++ultimoCodigo;
     }
 
     public int getCodigo() {
@@ -24,11 +22,11 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public Float getPrecio() {
+    public float getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Float precio) {
+    public void setPrecio(float precio) {
         this.precio = precio;
     }
 }

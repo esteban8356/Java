@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Factura {
+
     private int folio;
     private String descripcion;
     private Date fecha;
@@ -19,14 +20,6 @@ public class Factura {
         this.items = new ItemFactura[MAX_ITEMS];
         this.folio = ++ultimoFolio;
         this.fecha = new Date();
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
     }
 
     public int getFolio() {
@@ -49,18 +42,26 @@ public class Factura {
         this.fecha = fecha;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
     public ItemFactura[] getItems() {
         return items;
     }
 
-    public void addItemFcatura(ItemFactura item) {
-        if (indiceItems == MAX_ITEMS) {
+    public void addItemFactura(ItemFactura item) {
+        if (indiceItems < MAX_ITEMS) {
             this.items[indiceItems++] = item;
         }
     }
 
     public float calcularTotal() {
-        float total = 0;
+        float total = 0.0f;
         for (ItemFactura item : this.items) {
             if (item == null) {
                 continue;
@@ -71,20 +72,24 @@ public class Factura {
     }
 
     public String generarDetalle() {
-        StringBuilder sb = new StringBuilder("Factura N°: ");
-        sb.append(folio).append("\nCliente: ")
-                .append(cliente.getNombre())
-                .append("\tNIF: ")
-                .append(cliente.getCC())
-                .append("\nDescripccion: ")
+        StringBuilder sb = new StringBuilder("Factura Nº: ");
+        sb.append(folio)
+                .append("\nCliente: ")
+                .append(this.cliente.getNombre())
+                .append("\t NIF: ")
+                .append(cliente.getNif())
+                .append("\nDescripción: ")
                 .append(this.descripcion)
+                .append("\n");
+
+        SimpleDateFormat df = new SimpleDateFormat("dd 'de' MMMM, yyyy");
+        sb.append("Fecha Emisión: ")
+                .append(df.format(this.fecha))
                 .append("\n")
                 .append("\n#\tNombre\t$\tCant.\tTotal\n");
-        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-        sb.append("Fecha Emicion: ").append(df.format(this.fecha)).append("\n");
 
-        for(ItemFactura item : this.items) {
-            if (item == null) {
+        for(ItemFactura item: this.items){
+            if(item == null){
                 continue;
             }
             sb.append(item.getProducto().getCodigo())
@@ -98,8 +103,9 @@ public class Factura {
                     .append(item.calcularImporte())
                     .append("\n");
         }
-        sb.append("\n Gran Total: ")
+        sb.append("\nGran Total: ")
                 .append(calcularTotal());
+
         return sb.toString();
     }
 }
