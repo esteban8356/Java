@@ -3,8 +3,8 @@ package org.esteban.pooherencia;
 public class Alumno extends Persona{
     private String institucion;
     private double notaMatematicas;
-    private String notaCastellano;
-    private String notaHistoria;
+    private double notaCastellano;
+    private double notaHistoria;
 
     public String getInstitucion() {
         return institucion;
@@ -22,19 +22,19 @@ public class Alumno extends Persona{
         this.notaMatematicas = notaMatematicas;
     }
 
-    public String getNotaCastellano() {
+    public double getNotaCastellano() {
         return notaCastellano;
     }
 
-    public void setNotaCastellano(String notaCastellano) {
+    public void setNotaCastellano(double notaCastellano) {
         this.notaCastellano = notaCastellano;
     }
 
-    public String getNotaHistoria() {
+    public double getNotaHistoria() {
         return notaHistoria;
     }
 
-    public void setNotaHistoria(String notaHistoria) {
+    public void setNotaHistoria(double notaHistoria) {
         this.notaHistoria = notaHistoria;
     }
 }
