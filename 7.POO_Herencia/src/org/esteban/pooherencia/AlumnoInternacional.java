@@ -4,6 +4,19 @@ public class AlumnoInternacional extends Alumno {
     private String pais;
     private double notaIdiomas ;
 
+    public AlumnoInternacional(){
+        System.out.println("AlumnoInternacional: Iniciando contructor");
+    }
+
+    public AlumnoInternacional (String Nombre, String apellidos) {
+        super(Nombre, apellidos);
+    }
+
+    public AlumnoInternacional(String Nombre, String apellidos, String pais) {
+        super(Nombre, apellidos);
+        this.pais = pais;
+    }
+
     public String getPais() {
         return pais;
     }

@@ -7,6 +7,22 @@ public class Persona {
     private int edad;
     private String email;
 
+    public Persona(){
+        System.out.println("Persona : iniciando constructor");
+    }
+
+        public Persona(String nombre ,String apellido){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        }
+
+    public Persona(String nombre ,String apellido, int edad){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+    }
+
+
     public String getNombre() {
         return nombre;
     }
