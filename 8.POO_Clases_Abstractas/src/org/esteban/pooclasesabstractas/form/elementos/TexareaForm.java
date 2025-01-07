@@ -33,11 +33,9 @@ public class TexareaForm extends ElementoForm {
 
     @Override
     public String dibujarHtml() {
-        return "<Textara name='"
-                + this.nombre +"'  cols='"
-                + this.columnas + "'  rows='"
-                + this.filas + "' >"
-                + this.valor + "</Textara>";
-
+        return "<textarea name='" + this.nombre + "' cols='"
+                + this.columnas + "' rows='" + this.filas + "'>"
+                + this.valor + "</textarea>";
     }
 }
+
