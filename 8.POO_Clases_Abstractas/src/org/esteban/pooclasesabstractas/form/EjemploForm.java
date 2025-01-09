@@ -3,6 +3,7 @@ package org.esteban.pooclasesabstractas.form;
 import org.esteban.pooclasesabstractas.form.elementos.*;
 import org.esteban.pooclasesabstractas.form.elementos.ElementoForm;
 import org.esteban.pooclasesabstractas.form.elementos.Select.Opcion;
+import org.esteban.pooclasesabstractas.form.elementos.validador.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,13 +11,24 @@ import java.util.List;
 public class EjemploForm {
     public static void main(String[] args) {
         InputForm username = new InputForm("username");
+        username.addValidador(new RequeridoValidador());
+
         InputForm password = new InputForm("clave", "password");
+        password.addValidador(new RequeridoValidador())
+                .addValidador(new LargoValidador(6,12));
+
         InputForm email = new InputForm("email", "email");
+        email.addValidador(new RequeridoValidador())
+                .addValidador(new EmailValidador());
+
+
         InputForm edad = new InputForm("edad", "number");
+        edad.addValidador(new NumeroValidador());
 
         TexareaForm experiencia = new TexareaForm("exp", 5, 9);
 
         SelectForm lenguaje = new SelectForm("lenguaje");
+        lenguaje.addValidador(new NoNuloValidador());
 
         lenguaje.addOpcion(new Opcion("1", "Java"))
                 .addOpcion(new Opcion("2", "Python"))
@@ -50,6 +62,12 @@ public class EjemploForm {
         elementos.forEach(e -> {
             System.out.println(e.dibujarHtml());
             System.out.println("<br>");
+        });
+
+        elementos.forEach(e -> {
+            if (!e.esValido()){
+                e.getErrores().forEach(err -> System.out.println(e.getNombre()+ ": " +err));
+            }
         });
     }
 }
