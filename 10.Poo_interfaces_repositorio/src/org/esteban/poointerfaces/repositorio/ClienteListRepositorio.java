@@ -21,28 +21,32 @@ public class ClienteListRepositorio implements CrudRepositorio,
 
     @Override
     public Cliente porId(Integer id) {
-        Cliente c = null;
+        Cliente resultado = null;
         for (Cliente cli : dataSource) {
             if (cli.getId().equals(id)) {
-
+                resultado = cli;
+                break;
             }
         }
-        return null;
+        return resultado;
     }
 
     @Override
     public void crear(Cliente cliente) {
-
+        this.dataSource.add(cliente);
     }
 
     @Override
     public void editar(Cliente cliente) {
-
+        Cliente c = this.porId(cliente.getId());
+        c.setNombre(cliente.getNombre());
+        c.setApellido(cliente.getApellido());
     }
 
     @Override
     public void eliminar(Integer id) {
-
+        Cliente c = this.porId(id);
+        this.dataSource.remove(c);
     }
 
     @Override
